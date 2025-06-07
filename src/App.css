@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+.max-h-80{background-color: skyblue !important;padding: 1em !important;}
+.bg-blue-100{background-color: white;}
+.rounded-xl.cursor-pointer:hover{background-color: skyblue !important;cursor: pointer;}
