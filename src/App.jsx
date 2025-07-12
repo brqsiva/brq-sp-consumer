@@ -1,49 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { BRQSmartPopup } from 'brq-smart-popup'
-
+import { useState } from 'react';
+import './App.css';
+import Colorful from './components/Colorful';
+import UnFormatted from './components/UnFormatted';
+import Distributed from './components/Distributed';
+import Random from './components/Random';
+function Input(props) {
+  return <input autoComplete="off" {...props} />;
+}
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeTab, setActiveTab] = useState('UnFormatted'); // default tab
 
   return (
-    <>
-       <div className="p-6 max-w-md mx-auto bg-white shadow rounded relative">
-      <label htmlFor="first-name">First Name</label>
-      <input id="first-name" className="w-full border px-3 py-2 mb-4 rounded"
-        placeholder="Enter Name Here"
-      />
+    <div className="max-w-3xl mx-auto p-4 bg-white shadow rounded">
+      {/* Tabs Header */}
+      <div className="flex space-x-4 border-b mb-4">
+        <button
+          className={`px-4 py-2 font-medium ${
+            activeTab === 'UnFormatted' ? 'border-b-2 border-blue-500 text-blue-500' : 'text-gray-600'
+          }`}
+          onClick={() => setActiveTab('UnFormatted')}
+        >
+          UnFormatted
+        </button>
+        <button
+          className={`px-4 py-2 font-medium ${
+            activeTab === 'Colorful' ? 'border-b-2 border-blue-500 text-blue-500' : 'text-gray-600'
+          }`}
+          onClick={() => setActiveTab('Colorful')}
+        >
+          Colorful
+        </button>
+        <button
+          className={`px-4 py-2 font-medium ${
+            activeTab === 'Distributed' ? 'border-b-2 border-blue-500 text-blue-500' : 'text-gray-600'
+          }`}
+          onClick={() => setActiveTab('Distributed')}
+        >
+          Distributed
+        </button>
+        <button
+          className={`px-4 py-2 font-medium ${
+            activeTab === 'Random' ? 'border-b-2 border-blue-500 text-blue-500' : 'text-gray-600'
+          }`}
+          onClick={() => setActiveTab('Random')}
+        >
+          Random
+        </button>
+      </div>
 
-      <label htmlFor="email-id">Email</label>
-      <input id="email-id" className="w-full border px-3 py-2 mb-4 rounded"
-        placeholder="Enter EmailId Here"
-      />
-
-      <label htmlFor="phone-id">Phone</label>
-      <input id="phone-id" className="w-full border px-3 py-2 mb-4 rounded"
-        placeholder="Enter Phone Number Here"
-      />
-
-      <label htmlFor="photo-id">Street</label>
-      <input id="street-id" className="w-full border px-3 py-2 mb-4 rounded"
-        placeholder="Enter Street Name Here"
-      />
-
-      {/* Attach popup to #first-name */}
-      <BRQSmartPopup
-        api="https://www.gst.gov.in/fomessage/newsupdates"
-        dataKey="data"
-        displayFields={["date", "module", "title"]}
-        bindFields={{
-          title: "first-name",
-          date: "email-id",
-          module: "phone-id"
-        }}
-      />
+      {/* Tabs Content */}
+      <div>
+        {activeTab === 'UnFormatted' && <UnFormatted />}
+        {activeTab === 'Colorful' && <Colorful />}
+        {activeTab === 'Distributed' && <Distributed />}
+        {activeTab === 'Random' && <Random/>}
+      </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;

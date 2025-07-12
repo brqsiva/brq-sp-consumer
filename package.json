@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
-    "brq-smart-popup": "github:sprasadik2010/brq-smart-popup",
+    "brq-smart-popup": "github:brqsiva/brq-smart-popup",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.1.7"
